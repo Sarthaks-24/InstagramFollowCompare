@@ -165,9 +165,11 @@ def main():
         else:
             print("No new followers found")
 
-        max_id = payload.get("next_max_id")
-        if not payload.get("has_more") or not max_id:
+        next_max_id = payload.get("next_max_id")
+        if not payload.get("has_more") or not next_max_id or next_max_id == max_id:
             break
+
+        max_id = next_max_id
 
         time.sleep(POLL_INTERVAL_SECONDS)
 

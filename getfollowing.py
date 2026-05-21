@@ -168,8 +168,8 @@ def main():
         else:
             print('No new following found on this page')
 
-        # stop if server indicates no more or returned fewer than count
-        if not payload.get('has_more') or len(users) < count:
+        # stop if server indicates no more or returns no users
+        if not payload.get('has_more') or not users:
             break
 
         page += 1
